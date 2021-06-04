@@ -11,6 +11,7 @@ I've decided to make this repository, because I was finding it myself rather dif
 The current list of all receipes is listed below, every receipe also contains own README.md file with more details, set-up informations and so on.
 
 ###### PHP + MySQL + PHPMYADMIN
+https://github.com/hesmatt/docker-receipes/tree/master/.example.phpmyadmin
 
 
 ## How to run Docker?
