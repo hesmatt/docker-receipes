@@ -1,0 +1,41 @@
+version: '3.7'
+services:
+  php:
+    restart: always
+    build: ./docker/php
+    logging:
+      driver: json-file
+      options:
+        max-size: 10M
+        max-file: '10'
+    container_name: example_phpmyadmin_php
+    ports:
+      - '80:80'
+    volumes:
+      - './:/var/www/html'
+      - './docker/php/phpini:/usr/local/etc/php/conf.d'
+      - './docker/php/000-default.conf:/etc/apache2/sites-available/000-default.conf'
+    depends_on:
+      - mysql
+  mysql:
+    image: 'mysql:latest'
+    container_name: example_phpmyadmin_mysql
+    environment:
+      MYSQL_USER: example_phpmyadmin
+      MYSQL_PASSWORD: example_phpmyadmin
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: example_phpmyadmin
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: example_phpmyadmin_pma
+    links:
+      - mysql
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      PMA_ARBITRARY: 1
+    volumes:
+      - './docker/data/mysql:/var/lib/mysql'
+    restart: always
+    ports:
+      - '8080:80'
