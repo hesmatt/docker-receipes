@@ -28,3 +28,6 @@ https://docs.docker.com/docker-for-mac/install/
 https://docs.docker.com/engine/install/ubuntu/
 
 (Based off of Ubuntu, however, the commands can be easily adjusted and used on any other distro of your choice.)
+
+##Pull Request
+Pull request are welcomed, as well as adding new 'receipes' into this project :)
